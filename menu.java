@@ -1,66 +1,78 @@
 import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 
 public class menu{
 
     public static void main(String[] args)throws Exception{
         menu initial = new menu();
-        initial.initMenu();
-    }
-
-    public static void initMenu()throws Exception{
-        menu initial = new menu();
         initial.init();
     }
 
     public static void init() throws Exception{
-        
-        System.out.println("\n");
-        System.out.println("*************************");
-        System.out.println("*         Menu          *");
-        System.out.println("*************************");
-        System.out.println("* 1 - Inserir Valor     *");
-        System.out.println("* 2 - Visualizar Contas *");
-        System.out.println("* 3 - Pagar Contas      *");
-        System.out.println("* 0 - Sair              *");
-        System.out.println("*************************");
-        System.out.println("\n");
 
-        
-        Scanner selectOption = new Scanner(System.in);
-        System.out.println("Selectione uma opção: \n");
+        valueController returnValue = new valueController();
 
-        int option = selectOption.nextInt();
+            boolean continuar = true;
+            int option;
 
-        if(option == 1){
-            System.out.println(" ");
-            System.out.println("--Inserir Valor--\n");
+        while(continuar ==  true) {
+            
+            System.out.println("\n");
+            System.out.println("*************************");
+            System.out.println("*         Menu          *");
+            System.out.println("*************************");
+            System.out.println("* 1 - Inserir Valor     *");
+            System.out.println("* 2 - Visualizar Contas *");
+            System.out.println("* 3 - Pagar Contas      *");
+            System.out.println("* 4 - Visualizar Saldo  *");
+            System.out.println("* 0 - Sair              *");
+            System.out.println("*************************");
+            System.out.println("\n");
+
+            
+            Scanner selectOption = new Scanner(System.in);
+            System.out.println("Selectione uma opção: \n");
+            option = selectOption.nextInt();
+
+            switch(option){
+                case 1:
+                    System.out.println(" ");
+                    System.out.println("--Inserir Valor--\n");
+
+                    Scanner money = new Scanner(System.in);
+                    System.out.println("Quanto você quer depositar para pagar as contas ? ");
+
+                    int returnMoney = money.nextInt();
+
+                    boolean deposito_efetuado = returnValue.setSaldo(returnMoney);
+
+                    if(deposito_efetuado==true){
+                        System.out.println("Depósito realizado com sucesso!");
+                        System.out.println("Saldo atual: "+returnValue.getSaldo());
+                    }
+                    break;
+                case 2:
+                    System.out.println(" ");
+                    System.out.println("--Visualizar Contas--\n");
+
+                    read accounts = new read();
+                    accounts.main();
 
 
-        }
+                    break;
+                case 4:
+                    System.out.println(" ");
+                    System.out.println("--Visualizar Saldo--\n");
 
-        if(option == 2){
-            System.out.println(" ");
-            System.out.println("--Visualizar Contas--\n");
+                    System.out.println("Saldo atual: "+returnValue.getSaldo());
 
-            read accounts = new read();
-            accounts.main();
-
-            Scanner backMenu = new Scanner(System.in);
-            System.out.println("1 - Voltar ao menu inicial");
-            System.out.println("0 - Sair\n");
-
-            int backSelect = backMenu.nextInt();
-
-            if(backSelect == 2){
-                menu initialMenu = new menu();
-                initialMenu.initMenu();
-            }else{
-                System.exit(0);
+                    break;
+                case 0:
+                    continuar = false;
+                    System.exit(0);
+                    break;
             }
-        }
-
-        if(option == 0){
-            System.exit(0);
         }
     }
 }
