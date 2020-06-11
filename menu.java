@@ -61,6 +61,15 @@ public class menu{
 
 
                     break;
+                case 3:
+                    System.out.println(" ");
+                    System.out.println("--Pagamento de contas--\n");
+                    System.out.println("--Selecione a conta que quer pagar--\n");
+
+                    paymentController selectPaymentType = new paymentController();
+                    selectPaymentType.main();
+
+                    break;
                 case 4:
                     System.out.println(" ");
                     System.out.println("--Visualizar Saldo--\n");
