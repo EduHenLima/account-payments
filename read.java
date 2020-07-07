@@ -11,7 +11,6 @@ public class read{
 
         while((linha = reader.readLine()) != null){
             String[] dadosUsuario = linha.split(SEPARADOR);
-            // System.out.println(Arrays.toString(dadosUsuario));
             System.out.println("Conta: " + dadosUsuario[0]);
             System.out.println("Valor: " + dadosUsuario[1]);
             System.out.println("Vencimento: " + dadosUsuario[2]);
