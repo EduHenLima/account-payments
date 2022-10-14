@@ -1,3 +1,5 @@
+# Trabalho escolar
+
 * Regras para o desenvolvimento
 
 1. Deve ser totalmente orientado a objeto - OK
